@@ -1,6 +1,7 @@
 package task3;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
@@ -30,7 +31,10 @@ public class WebDriverCheckBox {
         if(selected) {
             webDriver.findElement(By.xpath(xpath)).click();
         }else {
-            webDriver.findElement(By.xpath(xpath));
+            //if already selected, click to unselect the checkbox
+            if(webDriver.findElement(By.xpath(xpath)).isSelected()) {
+                webDriver.findElement(By.xpath(xpath)).click();
+            }
         }
         //sleep seconds waiting for the page loading
         Thread.sleep(SLEEP_TIME);
@@ -60,7 +64,10 @@ public class WebDriverCheckBox {
             if(isSelected) {
                 webDriver.findElement(By.xpath(xpath)).click();
             }else {
-                webDriver.findElement(By.xpath(xpath));
+                //if already selected, click to unselect the checkbox
+                if(webDriver.findElement(By.xpath(xpath)).isSelected()) {
+                    webDriver.findElement(By.xpath(xpath)).click();
+                }
             }
 
             //put the xpath value and whether selected checkbox  into the result map
