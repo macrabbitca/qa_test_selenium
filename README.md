@@ -3,4 +3,4 @@ Installation.
 .To run the tests locally with Chrome, please download the Chrome driver and put it into src->main->reources->driver folder.  
 
 Running tests.   
-.Please go to the src->test->java folder, run the junit test case in ask1Test and Task2Test classes.  
+.Please go to the src->test->java folder, run the junit test case in ask1Test and Task3Test classes.  
