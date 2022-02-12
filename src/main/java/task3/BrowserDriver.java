@@ -20,14 +20,9 @@ public enum BrowserDriver {
     SAFARI(""),
 
     /**
-     * ie driver local path
-     */
-    IE(""),
-
-    /**
      * edge driver local path
      */
-    EDGE("");
+    EDGE("src/main/resources/driver/msedgedriver");
 
     private final String path;
 

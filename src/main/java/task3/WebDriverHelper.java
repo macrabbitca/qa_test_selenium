@@ -2,7 +2,9 @@ package task3;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 /**
  * Selenium web driver helper class.
@@ -28,16 +30,22 @@ public class WebDriverHelper {
     public static WebDriver setup(String url, Browser browser) {
 
         switch (browser){
-            case CHROME:
-                System.setProperty("webdriver.chrome.driver", BrowserDriver.CHROME.getPath());
-                //Create a instance of your web driver - chrome driver 98.0.4758.80 ver. for mac
-                driver = new ChromeDriver();
-                break;
             case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", BrowserDriver.FIREFOX.getPath());
                 driver = new FirefoxDriver();
                 break;
+            case EDGE:
+                System.setProperty("webdriver.edge.driver", BrowserDriver.EDGE.getPath());
+                driver = new EdgeDriver();
+                break;
+            case SAFARI:
+                System.setProperty("webdriver.safari.driver", BrowserDriver.EDGE.getPath());
+                driver = new SafariDriver();
+                break;
             default:
+                System.setProperty("webdriver.chrome.driver", BrowserDriver.CHROME.getPath());
+                //Create a instance of your web driver - chrome driver 98.0.4758.80 ver. for mac
+                driver = new ChromeDriver();
         }
 
         driver.get(url);

@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.WebDriver;
-import task3.Browser;
 import task3.WebDriverHelper;
 import task3.WebDriverCheckBox;
 
