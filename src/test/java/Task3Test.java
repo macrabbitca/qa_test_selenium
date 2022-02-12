@@ -46,8 +46,8 @@ public class Task3Test {
     public void selectMultipleCheckBoxChromeTest() throws InterruptedException {
         Map<String, Boolean> checkBoxMap = new HashMap<>();
         checkBoxMap.put("//input[@value='40603']", true);
-        checkBoxMap.put("//input[@value='40604']", true);
-        checkBoxMap.put("//input[@value='40747']", false);
+        checkBoxMap.put("//input[@value='40607']", true);
+        checkBoxMap.put("//input[@value='40747']", true);
         checkBoxMap.put("//input[@value='40605']", true);
 
         Map<String, Boolean> expectMap =  checkBoxMap;

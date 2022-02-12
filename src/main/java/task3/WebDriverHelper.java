@@ -2,8 +2,10 @@ package task3;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 /**
@@ -32,7 +34,9 @@ public class WebDriverHelper {
         switch (browser){
             case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", BrowserDriver.FIREFOX.getPath());
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--headless");
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
             case EDGE:
                 System.setProperty("webdriver.edge.driver", BrowserDriver.EDGE.getPath());
@@ -44,8 +48,10 @@ public class WebDriverHelper {
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", BrowserDriver.CHROME.getPath());
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless", "--disable-gpu", "--window-size=1024,768","--ignore-certificate-errors","--disable-extensions","--no-sandbox","--disable-dev-shm-usage");
                 //Create a instance of your web driver - chrome driver 98.0.4758.80 ver. for mac
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
         }
 
         driver.get(url);
