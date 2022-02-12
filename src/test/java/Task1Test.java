@@ -29,4 +29,5 @@ public class Task1Test {
         List<PairNumber> results = FindPairs.findUniquePairs(array, targetSum);
         System.out.println(results.toString());
     }
+
 }
