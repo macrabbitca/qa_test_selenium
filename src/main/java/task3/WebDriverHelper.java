@@ -27,16 +27,24 @@ public class WebDriverHelper {
      * Set up the chrome web driver for tested web page.
      * @param url test web url
      * @param  browser name like chrome, firefox
+     * @param  isHeadless if add headless option
      * @return chrome web driver
      */
-    public static WebDriver setup(String url, Browser browser) {
+    public static WebDriver setup(String url, Browser browser, Boolean isHeadless) {
+        if(isHeadless == null){
+            isHeadless = false;
+        }
 
         switch (browser){
             case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", BrowserDriver.FIREFOX.getPath());
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless");
-                driver = new FirefoxDriver(firefoxOptions);
+                if(isHeadless) {
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--headless");
+                    driver = new FirefoxDriver(firefoxOptions);
+                }else {
+                    driver = new FirefoxDriver();
+                }
                 break;
             case EDGE:
                 System.setProperty("webdriver.edge.driver", BrowserDriver.EDGE.getPath());
@@ -48,10 +56,14 @@ public class WebDriverHelper {
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", BrowserDriver.CHROME.getPath());
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless", "--disable-gpu", "--window-size=1024,768","--ignore-certificate-errors","--disable-extensions","--no-sandbox","--disable-dev-shm-usage");
-                //Create a instance of your web driver - chrome driver 98.0.4758.80 ver. for mac
-                driver = new ChromeDriver(chromeOptions);
+                if(isHeadless) {
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--headless", "--disable-gpu", "--window-size=1024,768", "--ignore-certificate-errors", "--disable-extensions", "--no-sandbox", "--disable-dev-shm-usage");
+                    //Create a instance of your web driver - chrome driver 98.0.4758.80 ver. for mac
+                    driver = new ChromeDriver(chromeOptions);
+                }else {
+                    driver = new ChromeDriver();
+                }
         }
 
         driver.get(url);

@@ -23,7 +23,7 @@ public class Task3Test {
         String xpath = "//input[@value='40603']";
         boolean selected = true;
 
-        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, CHROME);
+        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, CHROME, true);
         Boolean isCheck = WebDriverCheckBox.selectOne(xpath, selected, webDriver);
         WebDriverHelper.quit(webDriver);
 
@@ -35,7 +35,7 @@ public class Task3Test {
         String xpath = "//input[@value='40603']";
         boolean selected = true;
 
-        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, FIREFOX);
+        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, FIREFOX, false);
         Boolean isCheck = WebDriverCheckBox.selectOne(xpath, selected, webDriver);
         WebDriverHelper.quit(webDriver);
 
@@ -46,14 +46,14 @@ public class Task3Test {
     public void selectMultipleCheckBoxChromeTest() throws InterruptedException {
         Map<String, Boolean> checkBoxMap = new HashMap<>();
         checkBoxMap.put("//input[@value='40603']", true);
-        checkBoxMap.put("//input[@value='40607']", true);
+        checkBoxMap.put("//input[@value='40607']", false);
         checkBoxMap.put("//input[@value='40747']", true);
         checkBoxMap.put("//input[@value='40605']", true);
 
         Map<String, Boolean> expectMap =  checkBoxMap;
 
 
-        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, CHROME);
+        WebDriver webDriver = WebDriverHelper.setup(testWebUrl, CHROME, false);
         Map<String, Boolean> resultMap = WebDriverCheckBox.selectMultiple(checkBoxMap, webDriver);
         WebDriverHelper.quit(webDriver);
 
