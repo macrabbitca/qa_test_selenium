@@ -29,10 +29,6 @@ public class FindPairs {
         for(int leftIndex = 0; leftIndex < array.length; leftIndex++){
             int rightIndex = array.length - 1;
 
-            //skip same element to avoid duplicate pairs
-            if(leftIndex != 0 && array[leftIndex] == array[leftIndex - 1]) {
-                continue;
-            }
 
             while(leftIndex < rightIndex){
                 int currentSum = array[rightIndex] + array[leftIndex];
