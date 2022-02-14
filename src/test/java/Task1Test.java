@@ -28,6 +28,12 @@ public class Task1Test {
 
         List<PairNumber> results = FindPairs.findUniquePairs(array, targetSum);
         System.out.println(results.toString());
+
+        //test 2
+        array = new int[]{2,2};
+        targetSum = 4;
+        results = FindPairs.findUniquePairs(array, targetSum);
+        System.out.println(results.toString());
     }
 
 }
